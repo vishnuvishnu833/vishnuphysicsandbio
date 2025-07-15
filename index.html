@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Physics by Vishnu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <style>
+    * { margin:0; padding:0; box-sizing: border-box; }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(to right, #e0f7fa, #ffffff);
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, #00bfff, #1e90ff);
+      padding: 80px 20px 40px;
+      color: #fff;
+      text-align: center;
+      position: relative;
+    }
+
+    .logo {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 60px;
+      height: 60px;
+      background: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: #1e90ff;
+      font-size: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .hero-box {
+      background: rgba(255,255,255,0.1);
+      padding: 30px;
+      max-width: 800px;
+      margin: 0 auto;
+      border-radius: 15px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+    }
+
+    .hero-box h1 {
+      font-size: 48px;
+      margin-bottom: 10px;
+    }
+
+    .hero-box p {
+      font-size: 20px;
+      font-style: italic;
+    }
+
+    .info-section {
+      max-width: 1000px;
+      margin: 60px auto;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      padding: 0 20px;
+    }
+
+    .info-box {
+      background: #fff;
+      border-left: 6px solid #1e90ff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .info-box h2 {
+      font-size: 24px;
+      color: #1e90ff;
+      margin-bottom: 10px;
+    }
+
+    .slider {
+      max-width: 1000px;
+      margin: 60px auto;
+      text-align: center;
+      position: relative;
+    }
+
+    .slider img {
+      width: 100%;
+      max-height: 500px;
+      object-fit: contain;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .slider button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #00bfff;
+      border: none;
+      color: #fff;
+      padding: 15px 20px;
+      font-size: 18px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .slider button:hover {
+      background: #1e90ff;
+    }
+
+    .slider .prev { left: 20px; }
+    .slider .next { right: 20px; }
+
+    .accordion-box {
+      max-width: 1000px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+
+    .accordion-item {
+      background: #f0faff;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .accordion-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    }
+
+    .accordion-header {
+      padding: 20px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(135deg, #00bfff20, #1e90ff20);
+      font-weight: bold;
+      border-radius: 8px;
+    }
+
+    .accordion-header i {
+      transition: transform 0.3s;
+    }
+
+    .accordion-item.active .accordion-header i {
+      transform: rotate(180deg);
+    }
+
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+      padding: 0 20px;
+      background: #ffffff;
+      border-radius: 0 0 8px 8px;
+    }
+
+    .accordion-content p {
+      padding: 15px 0;
+      margin: 0;
+    }
+
+    footer {
+      background: #1e90ff;
+      color: #fff;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    footer a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    footer p {
+      margin: 8px 0;
+    }
+
+    .modal {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.85);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+    .modal img {
+      max-width: 90%;
+      max-height: 90%;
+      border: 4px solid #fff;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">VG</div>
+    <div class="hero-box">
+      <h1>Physics by Vishnu</h1>
+      <p>Empower Your Mind, Trust Yourself!</p>
+    </div>
+  </header>
+
+  <section class="info-section">
+    <div class="info-box">
+      <h2>Holistic Development</h2>
+      <p>We focus on the intellectual, physical, emotional, and social development of our students through a comprehensive range of facilities and activities.</p>
+    </div>
+    <div class="info-box">
+      <h2>Best CBSE & ICSE Coaching</h2>
+      <p>Whether you're looking for the best coaching for class 10 or top tuition center, our faculty provides comprehensive guidance for CBSE and ICSE Board curricula.</p>
+    </div>
+    <div class="info-box">
+      <h2>Trusted After-School Tuition</h2>
+      <p>As the leading institute, we ensure top-notch education, mentorship, and 24/7 student support.</p>
+    </div>
+    <div class="info-box">
+      <h2>Indoor & Outdoor Activities</h2>
+      <p>Smart turf, rooftop games, and fun breaks to balance learning with health.</p>
+    </div>
+    <div class="info-box">
+      <h2>High-Speed Wi-Fi & Hygiene</h2>
+      <p>Lightning-fast internet and sanitized environment for focused learning.</p>
+    </div>
+  </section>
+
+  <section class="slider">
+    <button class="prev" onclick="prevSlide()">&#10094;</button>
+    <img id="sliderImage" src="1.png" alt="Slide" onclick="openModal(this.src)">
+    <button class="next" onclick="nextSlide()">&#10095;</button>
+  </section>
+
+  <div class="accordion-box">
+    <div class="accordion-item">
+      <div class="accordion-header">What classes and subjects do you offer at Physics by Vishnu? <i class="fas fa-caret-down"></i></div>
+      <div class="accordion-content"><p>We offer CBSE & ICSE Board coaching for all major subjects.</p></div>
+    </div>
+    <div class="accordion-item">
+      <div class="accordion-header">What are your coaching center's timings? <i class="fas fa-caret-down"></i></div>
+      <div class="accordion-content"><p>Our center is open from 8 AM to 8 PM daily.</p></div>
+    </div>
+    <div class="accordion-item">
+      <div class="accordion-header">Where is Physics by Vishnu located? <i class="fas fa-caret-down"></i></div>
+      <div class="accordion-content"><p>We are located at Vijay Nagar, Gwalior.</p></div>
+    </div>
+    <div class="accordion-item">
+      <div class="accordion-header">Do you provide study materials and notes? <i class="fas fa-caret-down"></i></div>
+      <div class="accordion-content"><p>Yes! Quality notes and study materials are provided to every student.</p></div>
+    </div>
+    <div class="accordion-item">
+      <div class="accordion-header">How do you track student progress? <i class="fas fa-caret-down"></i></div>
+      <div class="accordion-content"><p>Regular tests and parent feedback sessions track student improvement.</p></div>
+    </div>
+  </div>
+
+  <footer>
+    <h3>Quick Links</h3>
+    <p><a href="#">About Us</a> | <a href="#">Our Features</a> | <a href="#">Testimonials</a> | <a href="#">Contact Us</a></p>
+    <p style="margin-top: 20px;">&copy; 2025 Physics by Vishnu. All rights reserved.</p>
+  </footer>
+
+  <script>
+    let currentSlide = 1;
+
+    function showSlide() {
+      document.getElementById('sliderImage').src = currentSlide + '.png';
+    }
+
+    function nextSlide() {
+      currentSlide++;
+      if (currentSlide > 5) currentSlide = 1;
+      showSlide();
+    }
+
+    function prevSlide() {
+      currentSlide--;
+      if (currentSlide < 1) currentSlide = 5;
+      showSlide();
+    }
+
+    function openModal(src) {
+      const modal = document.createElement('div');
+      modal.className = 'modal';
+      modal.innerHTML = `<img src="${src}" alt="Image">`;
+      modal.onclick = () => document.body.removeChild(modal);
+      document.body.appendChild(modal);
+    }
+
+    document.querySelectorAll('.accordion-header').forEach(header => {
+      header.addEventListener('click', () => {
+        const item = header.parentElement;
+        item.classList.toggle('active');
+        const content = header.nextElementSibling;
+        content.style.maxHeight = content.style.maxHeight ? null : content.scrollHeight + 'px';
+      });
+    });
+  </script>
+
+</body>
+</html>
